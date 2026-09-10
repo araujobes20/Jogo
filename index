@@ -1,13 +1,44 @@
-bash
-
+# 1. Primeiro cria o diretório isoladamente
 mkdir -p /home/claude/gradefull-rpg/css
+
+# 2. Depois cria o arquivo e insere o CSS
 cat > /home/claude/gradefull-rpg/css/style.css << 'EOF'
 /* ============================================================================
    Histórias do Mundo: Os Heróis de Gradefull — estilos
    Identidade visual: oceano mágico noturno + páginas de pergaminho antigo.
 ============================================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Literata:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  --bg-fundo: #0B1E2E;
+  --bg-fundo-2: #12324A;
+  --pergaminho: #F1E6C8;
+  --pergaminho-escuroExistem alguns erros críticos de sintaxe nesse script, causados principalmente por quebras de linha ausentes (provavelmente um problema na hora de copiar e colar o código). 
+
+Aqui estão os erros exatos que farão o script quebrar:
+
+1. **Comandos e diretórios colados (`csscat`):** 
+   O trecho `mkdir -p /home/claude/gradefull-rpg/csscat > ...` uniu o nome da pasta `css` com o comando `cat`. O Bash entenderá isso como a criação de uma pasta chamada `csscat` e não executará o `cat` para criar o arquivo. Eles precisam ser separados por uma quebra de linha ou ponto e vírgula.
+2. **O início do Heredoc está na mesma linha do conteúdo:** 
+   No trecho `<< 'EOF'/* ====`, a declaração do delimitador `EOF` deve ser seguida imediatamente por uma quebra de linha. O código CSS (que começa com `/*`) precisa ir para a linha de baixo.
+3. **O fechamento do Heredoc está colado em outro comando (`EOFwc`):** 
+   O fim do bloco de texto tem `EOFwc -l ...`. A palavra `EOF` obrigatoriamente precisa ficar **sozinha** em sua própria linha para que o Bash entenda que o texto acabou. Do jeito que está, o Bash vai procurar por um `EOF` até o fim do arquivo e falhar com um erro de sintaxe.
+4. **Resíduos de saída de console:** 
+   O texto no final do script (`Saída` e `432 /home/...`) parece ser o resultado de uma execução anterior copiado por engano. O Bash tentará executar a palavra `Saída` como se fosse um comando e retornará um erro `command not found`.
+
+### O código corrigido
+
+Para que o script funcione corretamente, as quebras de linha devem ser restauradas e o texto residual removido. Deve ficar assim:
+
+```bash
+mkdir -p /home/claude/gradefull-rpg/css
+
+cat > /home/claude/gradefull-rpg/css/style.css << 'EOF'
+/* ============================================================================
+   Histórias do Mundo: Os Heróis de Gradefull — estilos
+   Identidade visual: oceano mágico noturno + páginas de pergaminho antigo.
+============================================================================ */
+@import url('[https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Literata:ital,wght@0,400;0,500;0,700;1,400&display=swap](https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Literata:ital,wght@0,400;0,500;0,700;1,400&display=swap)');
 
 :root {
   --bg-fundo: #0B1E2E;
@@ -93,7 +124,6 @@ button, input {
 }
 
 .statusbar.escondido { display: none; }
-
 .status-heroes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
 .chip-heroi {
@@ -108,13 +138,9 @@ button, input {
 }
 
 .chip-heroi img { width: 22px; height: 22px; border-radius: 50%; }
-
 .status-fragmentos { display: flex; align-items: center; gap: 0.25rem; }
-
 .gema { width: 20px; height: 20px; }
-
 .gema-vazia { opacity: 0.25; filter: grayscale(1); }
-
 .status-contagem { font-size: 0.85rem; margin-left: 0.35rem; color: var(--ouro-claro); }
 
 /* -------------------- CONTEÚDO PRINCIPAL -------------------- */
@@ -165,7 +191,6 @@ h2 {
 }
 
 .botao-principal:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(201, 154, 60, 0.45); }
-
 .botao-secundario {
   background: transparent;
   color: var(--pergaminho);
@@ -241,7 +266,6 @@ h2 {
 }
 
 .carta-classe img { width: 64px; height: 64px; }
-
 .carta-nome {
   font-family: var(--fonte-titulo);
   font-size: 1rem;
@@ -275,9 +299,7 @@ h2 {
 }
 
 .criacao-nome.escondido { display: none; }
-
 .criacao-nome label { font-size: 0.9rem; color: var(--pergaminho-escuro); }
-
 .criacao-nome input {
   padding: 0.65rem 0.8rem;
   border-radius: 10px;
@@ -295,7 +317,6 @@ h2 {
 }
 
 .tela-pergunta p { color: var(--pergaminho-escuro); margin-bottom: 1.4rem; }
-
 .botoes-pergunta { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
 /* -------------------- TELA: MAPA DO TEMPO (hub) -------------------- */
@@ -334,11 +355,8 @@ h2 {
 }
 
 .carta-capitulo:not([disabled]):hover { transform: translateY(-3px); }
-
 .carta-capitulo[disabled] { cursor: default; opacity: 0.6; }
-
 .carta-capitulo.concluido { border-color: rgba(95, 214, 192, 0.6); }
-
 .carta-capitulo.carta-final { grid-column: 1 / -1; border-color: var(--ouro-claro); min-height: 130px; }
 
 .capitulo-selo {
@@ -416,7 +434,6 @@ h2 {
 }
 
 .escolha-requisito { font-size: 0.78rem; font-style: italic; opacity: 0.85; }
-
 .botao-jogar-de-novo { margin-top: 1.25rem; }
 
 /* -------------------- RODAPÉ -------------------- */
@@ -435,7 +452,5 @@ h2 {
   .statusbar { margin-left: 0; justify-content: center; width: 100%; }
 }
 EOF
-wc -l /home/claude/gradefull-rpg/css/style.css
-Saída
 
-432 /home/claude/gradefull-rpg/css/style.css
+wc -l /home/claude/gradefull-rpg/css/style.css
