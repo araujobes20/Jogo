@@ -1,0 +1,441 @@
+bash
+
+mkdir -p /home/claude/gradefull-rpg/css
+cat > /home/claude/gradefull-rpg/css/style.css << 'EOF'
+/* ============================================================================
+   Histórias do Mundo: Os Heróis de Gradefull — estilos
+   Identidade visual: oceano mágico noturno + páginas de pergaminho antigo.
+============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Literata:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  --bg-fundo: #0B1E2E;
+  --bg-fundo-2: #12324A;
+  --pergaminho: #F1E6C8;
+  --pergaminho-escuro: #E4D3A5;
+  --tinta: #3B2A1A;
+  --ouro: #C99A3C;
+  --ouro-claro: #E6C878;
+  --magia: #5FD6C0;
+  --bloqueado: #8A7F6C;
+  --fonte-titulo: 'Cinzel Decorative', 'Georgia', serif;
+  --fonte-texto: 'Literata', 'Georgia', serif;
+  --raio-pergaminho: 18px 6px 18px 6px;
+  --sombra-pergaminho: 0 12px 30px rgba(5, 12, 20, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--pergaminho);
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(95, 214, 192, 0.10), transparent 45%),
+    radial-gradient(ellipse at 85% 0%, rgba(140, 90, 220, 0.10), transparent 40%),
+    linear-gradient(180deg, var(--bg-fundo) 0%, var(--bg-fundo-2) 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--magia);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* -------------------- CABEÇALHO -------------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: rgba(6, 14, 22, 0.55);
+  border-bottom: 1px solid rgba(201, 154, 60, 0.35);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+  flex-wrap: wrap;
+}
+
+.crest { width: 34px; height: 34px; flex-shrink: 0; }
+
+.brand {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+  color: var(--ouro-claro);
+  flex-shrink: 0;
+}
+
+.statusbar {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.statusbar.escondido { display: none; }
+
+.status-heroes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.chip-heroi {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 154, 60, 0.4);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem 0.2rem 0.2rem;
+  font-size: 0.85rem;
+}
+
+.chip-heroi img { width: 22px; height: 22px; border-radius: 50%; }
+
+.status-fragmentos { display: flex; align-items: center; gap: 0.25rem; }
+
+.gema { width: 20px; height: 20px; }
+
+.gema-vazia { opacity: 0.25; filter: grayscale(1); }
+
+.status-contagem { font-size: 0.85rem; margin-left: 0.35rem; color: var(--ouro-claro); }
+
+/* -------------------- CONTEÚDO PRINCIPAL -------------------- */
+main#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.tela {
+  width: 100%;
+  max-width: 780px;
+  animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--ouro-claro);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.75rem;
+  text-align: center;
+}
+
+/* -------------------- BOTÕES -------------------- */
+.botao-principal, .botao-secundario {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 0.85rem 1.8rem;
+  font-weight: 600;
+  font-size: 1.02rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.botao-principal {
+  background: linear-gradient(180deg, var(--ouro-claro), var(--ouro));
+  color: #2A1E0C;
+  box-shadow: 0 6px 16px rgba(201, 154, 60, 0.35);
+}
+
+.botao-principal:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(201, 154, 60, 0.45); }
+
+.botao-secundario {
+  background: transparent;
+  color: var(--pergaminho);
+  border: 1.5px solid rgba(241, 230, 200, 0.5);
+}
+
+.botao-secundario:hover { border-color: var(--pergaminho); transform: translateY(-2px); }
+
+/* -------------------- TELA: TÍTULO -------------------- */
+.tela-titulo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  gap: 0.4rem;
+}
+
+.titulo-crest { width: 76px; height: 76px; margin-bottom: 0.5rem; }
+
+.titulo-jogo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  color: var(--pergaminho);
+  margin: 0;
+  opacity: 0.85;
+}
+
+.titulo-subtitulo {
+  font-family: var(--fonte-titulo);
+  font-size: 2.4rem;
+  color: var(--ouro-claro);
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.titulo-intro {
+  max-width: 46ch;
+  line-height: 1.6;
+  color: var(--pergaminho-escuro);
+  margin-bottom: 1.5rem;
+}
+
+/* -------------------- TELA: CRIAÇÃO DE PERSONAGEM -------------------- */
+.grade-classes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.carta-classe {
+  background: rgba(20, 40, 56, 0.55);
+  border: 2px solid rgba(201, 154, 60, 0.3);
+  border-radius: 14px;
+  padding: 1rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  color: var(--pergaminho);
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.carta-classe:hover { transform: translateY(-3px); border-color: rgba(201, 154, 60, 0.7); }
+
+.carta-classe.selecionada {
+  border-color: var(--ouro-claro);
+  background: rgba(201, 154, 60, 0.16);
+  box-shadow: 0 0 0 3px rgba(230, 200, 120, 0.25);
+}
+
+.carta-classe img { width: 64px; height: 64px; }
+
+.carta-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  color: var(--ouro-claro);
+}
+
+.carta-desc {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--pergaminho-escuro);
+  min-height: 3.4em;
+}
+
+.carta-stats {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--pergaminho);
+  opacity: 0.85;
+}
+
+.criacao-nome {
+  background: rgba(20, 40, 56, 0.5);
+  border-radius: 14px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.criacao-nome.escondido { display: none; }
+
+.criacao-nome label { font-size: 0.9rem; color: var(--pergaminho-escuro); }
+
+.criacao-nome input {
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(201, 154, 60, 0.4);
+  background: rgba(241, 230, 200, 0.92);
+  color: var(--tinta);
+}
+
+/* -------------------- TELA: PERGUNTA (segundo herói) -------------------- */
+.tela-pergunta {
+  text-align: center;
+  background: rgba(20, 40, 56, 0.5);
+  border-radius: 16px;
+  padding: 2rem 1.25rem;
+}
+
+.tela-pergunta p { color: var(--pergaminho-escuro); margin-bottom: 1.4rem; }
+
+.botoes-pergunta { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+
+/* -------------------- TELA: MAPA DO TEMPO (hub) -------------------- */
+.hub-intro {
+  text-align: center;
+  color: var(--pergaminho-escuro);
+  max-width: 56ch;
+  margin: 0 auto 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.grade-capitulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.carta-capitulo {
+  position: relative;
+  min-height: 170px;
+  border-radius: 14px;
+  border: 2px solid rgba(201, 154, 60, 0.45);
+  background-size: cover;
+  background-position: center;
+  color: var(--pergaminho);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  gap: 0.15rem;
+  transition: transform 0.15s ease;
+}
+
+.carta-capitulo:not([disabled]):hover { transform: translateY(-3px); }
+
+.carta-capitulo[disabled] { cursor: default; opacity: 0.6; }
+
+.carta-capitulo.concluido { border-color: rgba(95, 214, 192, 0.6); }
+
+.carta-capitulo.carta-final { grid-column: 1 / -1; border-color: var(--ouro-claro); min-height: 130px; }
+
+.capitulo-selo {
+  align-self: flex-start;
+  background: rgba(9, 20, 30, 0.7);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.72rem;
+  margin-bottom: 0.4rem;
+}
+
+.capitulo-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  color: var(--ouro-claro);
+}
+
+.capitulo-subtitulo { font-size: 0.85rem; color: var(--pergaminho-escuro); }
+
+/* -------------------- TELA: HISTÓRIA -------------------- */
+.tela-historia { display: flex; flex-direction: column; gap: 0; }
+
+.cena {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  display: block;
+  box-shadow: var(--sombra-pergaminho);
+}
+
+.cena.cena-corrompida { filter: saturate(1.3) hue-rotate(-18deg) brightness(0.85) contrast(1.1); }
+
+.painel-texto {
+  background: linear-gradient(180deg, var(--pergaminho), var(--pergaminho-escuro));
+  color: var(--tinta);
+  border-radius: 0 0 16px 16px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  box-shadow: var(--sombra-pergaminho);
+}
+
+.texto-historia {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+}
+
+.lista-escolhas { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.botao-escolha {
+  text-align: left;
+  background: rgba(59, 42, 26, 0.06);
+  border: 1.5px solid rgba(59, 42, 26, 0.28);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--tinta);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.botao-escolha:hover:not([disabled]) {
+  background: rgba(201, 154, 60, 0.18);
+  border-color: var(--ouro);
+  transform: translateX(2px);
+}
+
+.botao-escolha[disabled] {
+  cursor: default;
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.escolha-requisito { font-size: 0.78rem; font-style: italic; opacity: 0.85; }
+
+.botao-jogar-de-novo { margin-top: 1.25rem; }
+
+/* -------------------- RODAPÉ -------------------- */
+.foot {
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(241, 230, 200, 0.55);
+  padding: 1rem;
+}
+
+/* -------------------- RESPONSIVO -------------------- */
+@media (max-width: 480px) {
+  .titulo-subtitulo { font-size: 1.9rem; }
+  .carta-capitulo.carta-final { grid-column: auto; }
+  .topbar { justify-content: center; }
+  .statusbar { margin-left: 0; justify-content: center; width: 100%; }
+}
+EOF
+wc -l /home/claude/gradefull-rpg/css/style.css
+Saída
+
+432 /home/claude/gradefull-rpg/css/style.css
