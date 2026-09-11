@@ -1,0 +1,16 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Druida">
+  <defs>
+    <radialGradient id="bgDruida" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#3E5A34"/>
+      <stop offset="100%" stop-color="#1B2A16"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#bgDruida)"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#C99A3C" stroke-width="3"/>
+  <path d="M60 86 L60 46" stroke="#8A6A2E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M60 46 Q44 40 40 24 Q56 28 60 46 Z" fill="#7FAE5E"/>
+  <path d="M60 46 Q76 40 80 24 Q64 28 60 46 Z" fill="#8FC26B"/>
+  <path d="M60 60 Q44 56 42 44 Q56 46 60 60 Z" fill="#6E9A50"/>
+  <path d="M60 60 Q76 56 78 44 Q64 46 60 60 Z" fill="#7FAE5E"/>
+  <ellipse cx="60" cy="90" rx="14" ry="4" fill="#8A6A2E" opacity="0.6"/>
+</svg>

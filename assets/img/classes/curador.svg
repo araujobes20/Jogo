@@ -1,0 +1,17 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curador">
+  <defs>
+    <radialGradient id="bgCurador" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#8F6A3E"/>
+      <stop offset="100%" stop-color="#2E2013"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#bgCurador)"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#C99A3C" stroke-width="3"/>
+  <path d="M60 82 C34 64 40 40 58 44 C59 44 60 46 60 46 C60 46 61 44 62 44 C80 40 86 64 60 82 Z" fill="#F1E6C8"/>
+  <path d="M60 46 L60 62 M52 54 L68 54" stroke="#8F6A3E" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#F6D77A" stroke-width="2" opacity="0.7">
+    <path d="M60 24 L60 32"/>
+    <path d="M42 30 L46 36"/>
+    <path d="M78 30 L74 36"/>
+  </g>
+</svg>

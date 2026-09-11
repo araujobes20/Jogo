@@ -1,0 +1,17 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bruxo">
+  <defs>
+    <radialGradient id="bgBruxo" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#2C4A3B"/>
+      <stop offset="100%" stop-color="#0C1F16"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#bgBruxo)"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#C99A3C" stroke-width="3"/>
+  <path d="M40 88 Q38 64 60 62 Q82 64 80 88 Z" fill="#3E5B48"/>
+  <ellipse cx="60" cy="88" rx="22" ry="5" fill="#2C4A3B"/>
+  <ellipse cx="60" cy="62" rx="20" ry="6" fill="#4E7359"/>
+  <path d="M48 56 Q52 42 46 32" fill="none" stroke="#8FBFA3" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M60 54 Q64 38 58 26" fill="none" stroke="#8FBFA3" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M72 56 Q76 44 71 34" fill="none" stroke="#8FBFA3" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M84 30 A7 7 0 1 0 84 44 A9 9 0 1 1 84 30 Z" fill="#D9EFE2" opacity="0.85"/>
+</svg>

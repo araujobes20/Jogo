@@ -1,0 +1,35 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Deserto dourado ao entardecer com pirâmides e uma esfinge de pedra ao longe">
+  <defs>
+    <linearGradient id="skyEG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B2A55"/>
+      <stop offset="45%" stop-color="#B0563E"/>
+      <stop offset="100%" stop-color="#F0A24A"/>
+    </linearGradient>
+    <linearGradient id="sandEG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8B45C"/>
+      <stop offset="100%" stop-color="#B9803A"/>
+    </linearGradient>
+    <radialGradient id="sunEG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCE2A8"/>
+      <stop offset="100%" stop-color="#FCE2A8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="290" fill="url(#skyEG)"/>
+  <circle cx="360" cy="240" r="100" fill="url(#sunEG)"/>
+  <circle cx="360" cy="240" r="46" fill="#FCE9C2"/>
+  <rect width="800" height="180" y="270" fill="url(#sandEG)"/>
+  <polygon points="180,270 260,150 340,270" fill="#8C5A2E"/>
+  <polygon points="260,270 330,175 400,270" fill="#A8703A"/>
+  <polygon points="470,270 540,190 610,270" fill="#96622F"/>
+  <g fill="#6B4423">
+    <path d="M600 270 L600 250 Q600 244 606 244 L618 244 Q622 244 622 240 Q622 232 630 232 Q638 232 638 240 Q638 244 642 244 L654 244 Q660 244 660 250 L660 270 Z"/>
+    <ellipse cx="630" cy="222" rx="9" ry="10"/>
+    <ellipse cx="620" cy="228" rx="4" ry="6"/>
+    <ellipse cx="640" cy="228" rx="4" ry="6"/>
+    <path d="M600 270 Q630 282 660 270 L720 270 Q745 270 748 270 Q748 260 735 258 Q700 250 660 258 Q630 250 600 258 Z"/>
+  </g>
+  <g stroke="#C98B45" stroke-width="2" fill="none" opacity="0.4">
+    <path d="M0 330 Q150 310 300 330 T600 330 T800 330"/>
+    <path d="M0 380 Q150 365 300 380 T600 380 T800 380"/>
+  </g>
+</svg>

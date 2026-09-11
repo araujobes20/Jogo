@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A ilha mágica de Gradefull sob o céu noturno, com uma torre de castelo e o mar ao redor">
+  <defs>
+    <linearGradient id="skyGF" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B1A33"/>
+      <stop offset="60%" stop-color="#1B3652"/>
+      <stop offset="100%" stop-color="#2E4A63"/>
+    </linearGradient>
+    <linearGradient id="seaGF" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#123145"/>
+      <stop offset="100%" stop-color="#08161F"/>
+    </linearGradient>
+    <radialGradient id="moonGF" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F6D77A"/>
+      <stop offset="100%" stop-color="#F6D77A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="290" fill="url(#skyGF)"/>
+  <circle cx="660" cy="90" r="70" fill="url(#moonGF)"/>
+  <circle cx="660" cy="90" r="28" fill="#FBEBB5"/>
+  <g fill="#FFFFFF" opacity="0.7">
+    <circle cx="80" cy="60" r="1.4"/><circle cx="140" cy="110" r="1.2"/><circle cx="220" cy="50" r="1.6"/>
+    <circle cx="300" cy="90" r="1.2"/><circle cx="400" cy="40" r="1.4"/><circle cx="480" cy="120" r="1.2"/>
+    <circle cx="560" cy="60" r="1.4"/><circle cx="40" cy="150" r="1.2"/><circle cx="730" cy="150" r="1.4"/>
+  </g>
+  <path d="M0 180 Q200 140 400 175 Q600 205 800 160 L800 230 Q600 260 400 230 Q200 200 0 240 Z" fill="#5FD6C0" opacity="0.12"/>
+  <path d="M0 210 Q220 170 420 205 Q620 235 800 190 L800 250 Q600 275 400 250 Q200 220 0 260 Z" fill="#8F6ADF" opacity="0.10"/>
+  <path d="M120 290 Q260 210 420 250 Q560 285 700 260 L700 300 L120 300 Z" fill="#152233"/>
+  <rect x="420" y="200" width="34" height="70" fill="#0E1A28"/>
+  <polygon points="420,200 437,175 454,200" fill="#0E1A28"/>
+  <rect x="470" y="225" width="22" height="45" fill="#0E1A28"/>
+  <polygon points="470,225 481,208 492,225" fill="#0E1A28"/>
+  <rect x="428" y="215" width="6" height="8" fill="#F6D77A" opacity="0.85"/>
+  <rect x="476" y="238" width="5" height="7" fill="#F6D77A" opacity="0.85"/>
+  <rect width="800" height="160" y="290" fill="url(#seaGF)"/>
+  <g stroke="#5FD6C0" stroke-width="1.5" fill="none" opacity="0.25">
+    <path d="M0 320 Q100 310 200 320 T400 320 T600 320 T800 320"/>
+    <path d="M0 360 Q100 350 200 360 T400 360 T600 360 T800 360"/>
+    <path d="M0 400 Q100 392 200 400 T400 400 T600 400 T800 400"/>
+  </g>
+</svg>

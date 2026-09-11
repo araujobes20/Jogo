@@ -1,0 +1,7 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brasão de Gradefull">
+  <path d="M50 6 L88 20 V48 C88 74 72 90 50 96 C28 90 12 74 12 48 V20 Z"
+        fill="#12324A" stroke="#C99A3C" stroke-width="3"/>
+  <path d="M24 55 Q37 45 50 55 Q63 65 76 55" fill="none" stroke="#5FD6C0" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 66 Q37 56 50 66 Q63 76 76 66" fill="none" stroke="#5FD6C0" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+  <path d="M50 20 L54 30 L65 31 L56 38 L59 49 L50 43 L41 49 L44 38 L35 31 L46 30 Z" fill="#F6D77A"/>
+</svg>

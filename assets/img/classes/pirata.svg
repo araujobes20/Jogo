@@ -1,0 +1,23 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pirata">
+  <defs>
+    <radialGradient id="bgPirata" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#2C5D6B"/>
+      <stop offset="100%" stop-color="#0F2A3D"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#bgPirata)"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#C99A3C" stroke-width="3"/>
+  <circle cx="60" cy="66" r="22" fill="none" stroke="#E4D3A5" stroke-width="4"/>
+  <circle cx="60" cy="66" r="7" fill="#E4D3A5"/>
+  <g stroke="#E4D3A5" stroke-width="4" stroke-linecap="round">
+    <path d="M60 44 L60 34"/>
+    <path d="M60 88 L60 98"/>
+    <path d="M38 66 L28 66"/>
+    <path d="M82 66 L92 66"/>
+    <path d="M44 50 L37 43"/>
+    <path d="M76 82 L83 89"/>
+    <path d="M76 50 L83 43"/>
+    <path d="M44 82 L37 89"/>
+  </g>
+  <path d="M40 32 Q60 14 80 32 Q66 26 60 28 Q54 26 40 32 Z" fill="#3B2A1A" stroke="#C99A3C" stroke-width="1.5"/>
+</svg>

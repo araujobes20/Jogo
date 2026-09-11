@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Fiorde congelado sob a aurora boreal, com montanhas nevadas e um navio viking na praia gelada">
+  <defs>
+    <linearGradient id="skyVK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050B1A"/>
+      <stop offset="100%" stop-color="#122238"/>
+    </linearGradient>
+    <linearGradient id="seaVK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B3A52"/>
+      <stop offset="100%" stop-color="#0A1824"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="290" fill="url(#skyVK)"/>
+  <path d="M0 90 Q150 40 300 90 Q450 140 600 80 Q700 45 800 90 L800 160 Q650 130 500 165 Q350 195 200 150 Q100 125 0 160 Z" fill="#4FBF8A" opacity="0.18"/>
+  <path d="M0 120 Q150 80 300 120 Q450 160 600 110 Q700 80 800 120 L800 180 Q650 155 500 185 Q350 210 200 175 Q100 155 0 185 Z" fill="#5FD6C0" opacity="0.14"/>
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="60" cy="50" r="1.3"/><circle cx="140" cy="30" r="1.5"/><circle cx="260" cy="55" r="1.2"/>
+    <circle cx="480" cy="35" r="1.4"/><circle cx="600" cy="55" r="1.2"/><circle cx="730" cy="40" r="1.5"/>
+  </g>
+  <polygon points="60,270 150,140 240,270" fill="#2B3B52"/>
+  <polygon points="220,270 320,110 420,270" fill="#233248"/>
+  <polygon points="560,270 660,150 760,270" fill="#2B3B52"/>
+  <polygon points="150,140 165,168 135,168" fill="#EAF2F6"/>
+  <polygon points="320,110 338,142 302,142" fill="#EAF2F6"/>
+  <polygon points="660,150 675,178 645,178" fill="#EAF2F6"/>
+  <rect width="800" height="180" y="270" fill="url(#seaVK)"/>
+  <ellipse cx="150" cy="300" rx="60" ry="14" fill="#DCEBF0" opacity="0.5"/>
+  <ellipse cx="650" cy="320" rx="70" ry="16" fill="#DCEBF0" opacity="0.4"/>
+  <path d="M300 320 Q300 300 340 296 L470 296 Q505 300 505 320 Q460 332 400 332 Q345 332 300 320 Z" fill="#3B2A1E"/>
+  <path d="M340 296 Q400 288 470 296" fill="none" stroke="#241A12" stroke-width="3"/>
+  <path d="M400 296 L400 200" stroke="#5B4530" stroke-width="4"/>
+  <path d="M400 205 Q432 215 432 250 Q400 262 400 262 Z" fill="#C9BFA8" opacity="0.9"/>
+  <path d="M300 306 Q290 296 296 284" stroke="#3B2A1E" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fada">
+  <defs>
+    <radialGradient id="bgFada" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#7A5D8F"/>
+      <stop offset="100%" stop-color="#3A2A4D"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#bgFada)"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#C99A3C" stroke-width="3"/>
+  <path d="M60 60 Q40 40 30 52 Q34 68 60 60 Z" fill="#F0C9E0" opacity="0.85"/>
+  <path d="M60 60 Q80 40 90 52 Q86 68 60 60 Z" fill="#F0C9E0" opacity="0.85"/>
+  <path d="M60 60 Q46 78 36 76 Q42 90 60 60 Z" fill="#D9A9D0" opacity="0.75"/>
+  <path d="M60 60 Q74 78 84 76 Q78 90 60 60 Z" fill="#D9A9D0" opacity="0.75"/>
+  <path d="M60 46 L64 58 L76 60 L64 62 L60 74 L56 62 L44 60 L56 58 Z" fill="#F6D77A"/>
+  <g fill="#F1E6C8">
+    <circle cx="30" cy="70" r="1.4"/>
+    <circle cx="90" cy="68" r="1.4"/>
+    <circle cx="60" cy="30" r="1.4"/>
+  </g>
+</svg>
