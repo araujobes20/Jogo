@@ -87,7 +87,7 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 
 <section class="card">
 <h2>5. Registro anônimo</h2>
-<label class="option"><input type="checkbox" id="saveData"> <span>Autorizo o envio das respostas à planilha da atividade extensionista.</span></label>
+<label class="option"><input type="checkbox" id="saveData"> <span>Autorizo o envio das respostas à pesquisa da atividade extensionista.</span></label>
 <div class="actions"><button type="submit">Ver minha orientação</button><button type="button" class="secondary" id="reset">Limpar respostas</button></div>
 </section>
 </form>
@@ -96,30 +96,12 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 <h2>Seu resultado educativo</h2><div id="result" class="result"></div>
 <div class="actions"><button type="button" id="print">Imprimir orientação</button></div>
 </section>
-
-<!-- IFRAME E FORMULÁRIO OCULTOS PARA ENVIO SEGURO -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-<form id="hiddenForm" method="POST" action="https://script.google.com/macros/s/AKfycbzzGFysIW67mbJ6YgxLoS7NHMikQt8tInPefkCxfOFXH6L8bh508eLZDKSMxXyi1F5gyQ/exec" target="hidden_iframe" style="display:none;">
-  <input type="hidden" name="id" id="h_id">
-  <input type="hidden" name="ageBand" id="h_ageBand">
-  <input type="hidden" name="age" id="h_age">
-  <input type="hidden" name="personal" id="h_personal">
-  <input type="hidden" name="familyBreast" id="h_familyBreast">
-  <input type="hidden" name="familyOther" id="h_familyOther">
-  <input type="hidden" name="symptoms" id="h_symptoms">
-  <input type="hidden" name="mammo" id="h_mammo">
-  <input type="hidden" name="alcohol" id="h_alcohol">
-  <input type="hidden" name="activity" id="h_activity">
-  <input type="hidden" name="referralPriority" id="h_referralPriority">
-  <input type="hidden" name="recommendation" id="h_recommendation">
-  <input type="hidden" name="associatedFactors" id="h_associatedFactors">
-  <input type="hidden" name="nextSteps" id="h_nextSteps">
-  <input type="hidden" name="consent" id="h_consent" value="true">
-</form>
-
 </main>
 
 <script>
+// Cole aqui a sua Access Key gerada no site do Web3Forms
+const WEB3FORMS_ACCESS_KEY = "11e2a02b-3f72-4aed-8adc-31ef666d7ea7";
+
 const get = name => document.querySelector(`input[name="${name}"]:checked`)?.value || "";
 const selected = id => document.getElementById(id).value;
 const labels = { "lt40": "Menos de 40 anos", "40_49": "40 a 49 anos", "50_74": "50 a 74 anos", "gt74": "75 anos ou mais" };
@@ -172,7 +154,7 @@ function collect(){
 
 function makeId(){ return "RG-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8).toUpperCase(); }
 
-document.getElementById("quiz").addEventListener("submit", e => {
+document.getElementById("quiz").addEventListener("submit", async e => {
   e.preventDefault();
   if(!document.getElementById("consent").checked){
     alert("Para continuar, confirme que leu e concorda com o aviso de privacidade.");
@@ -182,30 +164,54 @@ document.getElementById("quiz").addEventListener("submit", e => {
   const a = collect(), r = evaluate(a), id = makeId();
   const section = document.getElementById("resultSection"), box = document.getElementById("result");
 
-  box.innerHTML = `<section><h3>1. Prioridade</h3><p><span class="pill">${r.priority}</span></p><p><strong>${r.urgency}</strong></p><ul>${r.actions.map(x=>`<li>${x}</li>`).join("")}</ul></section><hr><section><h3>2. Fatores</h3><ul>${r.factors.map(x=>`<li>${x}</li>`).join("")}</ul></section><p class="note">Código: ${id}</p>`;
+  box.innerHTML = `<section><h3>1. Prioridade</h3><p><span class="pill">${r.priority}</span></p><p><strong>${r.urgency}</strong></p><ul>${r.actions.map(x=>`<li>${x}</li>`).join("")}</ul></section><hr><section><h3>2. Fatores</h3><ul>${r.factors.map(x=>`<li>${x}</li>`).join("")}</ul></section><p class="note">Código anônimo: ${id}</p>`;
   section.classList.remove("hidden");
   section.scrollIntoView({behavior:"smooth"});
 
-  // Se autorizado, preenche o formulário invisível e envia via iframe
   if(document.getElementById("saveData").checked){
-    document.getElementById("h_id").value = id;
-    document.getElementById("h_ageBand").value = labels[a.age] || "";
-    document.getElementById("h_age").value = a.age;
-    document.getElementById("h_personal").value = a.personal;
-    document.getElementById("h_familyBreast").value = a.familyBreast;
-    document.getElementById("h_familyOther").value = a.familyOther;
-    document.getElementById("h_symptoms").value = a.symptoms;
-    document.getElementById("h_mammo").value = a.mammo;
-    document.getElementById("h_alcohol").value = a.alcohol;
-    document.getElementById("h_activity").value = a.activity;
-    document.getElementById("h_referralPriority").value = r.priority;
-    document.getElementById("h_recommendation").value = r.urgency;
-    document.getElementById("h_associatedFactors").value = r.factors.join("; ");
-    document.getElementById("h_nextSteps").value = r.actions.join("; ");
+    if(WEB3FORMS_ACCESS_KEY === "SUA_CHAVE_AQUI") {
+      alert("Por favor, configure a chave do Web3Forms no código!");
+      return;
+    }
 
-    // Dispara o envio nativo
-    document.getElementById("hiddenForm").submit();
-    box.insertAdjacentHTML("beforeend", "<p class='note'>✓ Respostas enviadas para a planilha de acompanhamento.</p>");
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Novo registro RosaGuia: ${id}`,
+      from_name: "RosaGuia App",
+      codigo_anonimo: id,
+      faixa_etaria: labels[a.age] || a.age,
+      historico_pessoal: a.personal,
+      historico_familiar_mama: a.familyBreast,
+      historico_familiar_outros: a.familyOther,
+      sintomas_atuais: a.symptoms,
+      mamografia: a.mammo,
+      alcool: a.alcohol,
+      atividade_fisica: a.activity,
+      prioridade_encaminhamento: r.priority,
+      recomendacao: r.urgency,
+      fatores_associados: r.factors.join("; "),
+      proximos_passos: r.actions.join("; ")
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const res = await response.json();
+      if(res.success) {
+        box.insertAdjacentHTML("beforeend", "<p class='note'>✓ Respostas registradas com sucesso!</p>");
+      } else {
+        box.insertAdjacentHTML("beforeend", "<p class='note'>Erro ao registrar respostas. Tente novamente.</p>");
+      }
+    } catch(err) {
+      box.insertAdjacentHTML("beforeend", "<p class='note'>Erro na conexão. Verifique sua internet.</p>");
+    }
   }
 });
 
