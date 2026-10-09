@@ -22,9 +22,8 @@ button{border:0;border-radius:12px;padding:13px 18px;background:var(--pink);colo
 button:hover{background:#a3154d}button.secondary{background:#fce4ec;color:#8e1648}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hidden{display:none!important}
 .result{border:2px solid var(--pink2);background:var(--pale);border-radius:16px;padding:20px}
-.score{font-size:2.6rem;font-weight:850;color:var(--pink);line-height:1.2}.pill{display:inline-block;background:#f8bbd0;color:#7f123f;border-radius:999px;padding:5px 10px;font-weight:750;font-size:.85rem}
+.pill{display:inline-block;background:#f8bbd0;color:#7f123f;border-radius:999px;padding:5px 10px;font-weight:750;font-size:.85rem}
 ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted)}a{color:#9c174d}
-.progress{height:6px;background:#f5d9e4;border-radius:9px;overflow:hidden;margin:12px 0}.progress>div{height:100%;background:var(--pink);width:0}
 </style>
 </head>
 <body>
@@ -32,10 +31,11 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 <main class="wrap">
 <section class="card">
 <h2>Antes de começar</h2>
-<p>Este recurso é educativo. Não diagnostica câncer, não substitui consulta e não calcula a probabilidade individual de desenvolver a doença. As recomendações seguem referências públicas brasileiras; confirme sempre a orientação atual com a equipe de saúde.</p>
-<p class="note">Não informe nome, CPF, telefone, endereço ou outros identificadores. As respostas são informações de saúde: só prossiga se concordar com o registro anônimo das respostas para avaliação da atividade extensionista.</p>
-<label class="option"><input type="checkbox" id="consent"> <span>Concordo com o registro das minhas respostas sem identificação direta para fins de avaliação da atividade. Fui informada sobre a finalidade do registro.</span></label>
+<p>Este recurso é educativo. Não diagnostica câncer, não substitui consulta e não calcula a probabilidade individual de desenvolver a doença.</p>
+<p class="note">Não informe nome, CPF, telefone, endereço ou outros identificadores. As respostas são informações de saúde: só prossiga se concordar com o registro anônimo das respostas.</p>
+<label class="option"><input type="checkbox" id="consent"> <span>Concordo com o registro das minhas respostas sem identificação direta.</span></label>
 </section>
+
 <form id="quiz">
 <section class="card">
 <h2>1. Sobre você</h2>
@@ -45,6 +45,7 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 <label class="option"><input type="radio" name="personal" value="no"> <span>Não</span></label>
 <label class="option"><input type="radio" name="personal" value="unknown"> <span>Não sei / prefiro não responder</span></label></fieldset>
 </section>
+
 <section class="card">
 <h2>2. Histórico familiar</h2>
 <fieldset><legend>Algum parente consanguíneo teve câncer de mama?</legend>
@@ -58,14 +59,15 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 <label class="option"><input type="radio" name="familyOther" value="no"> <span>Não que eu saiba</span></label>
 <label class="option"><input type="radio" name="familyOther" value="unknown"> <span>Não sei</span></label></fieldset>
 </section>
+
 <section class="card">
 <h2>3. Sinais e sintomas atuais</h2>
-<p class="note">Considere alterações novas ou persistentes. Não é necessário ter dor para que uma alteração mereça avaliação.</p>
 <fieldset><legend>Você percebeu alguma destas alterações recentemente?</legend>
 <label class="option"><input type="radio" name="symptoms" value="yes" required> <span>Sim: nódulo novo, retração/alteração da pele ou mamilo, secreção espontânea sanguinolenta, ou mudança persistente em uma mama.</span></label>
 <label class="option"><input type="radio" name="symptoms" value="no"> <span>Não</span></label>
 <label class="option"><input type="radio" name="symptoms" value="unsure"> <span>Não tenho certeza</span></label></fieldset>
 </section>
+
 <section class="card">
 <h2>4. Rastreamento e hábitos</h2>
 <fieldset><legend>Quando foi sua última mamografia, se já realizou?</legend>
@@ -82,126 +84,97 @@ ul{padding-left:22px}li{margin:.45rem 0}.foot{font-size:.85rem;color:var(--muted
 <label class="option"><input type="radio" name="activity" value="no"> <span>Não ou raramente</span></label>
 <label class="option"><input type="radio" name="activity" value="prefer"> <span>Prefiro não responder</span></label></fieldset>
 </section>
+
 <section class="card">
 <h2>5. Registro anônimo</h2>
-<p class="note">A planilha recebe faixa etária, respostas categóricas, índice educativo e orientação gerada. Não coleta nome nem contato. A equipe organizadora deve limitar o acesso à planilha e definir prazo de exclusão.</p>
 <label class="option"><input type="checkbox" id="saveData"> <span>Autorizo o envio das respostas à planilha da atividade extensionista.</span></label>
 <div class="actions"><button type="submit">Ver minha orientação</button><button type="button" class="secondary" id="reset">Limpar respostas</button></div>
 </section>
 </form>
+
 <section id="resultSection" class="card hidden" aria-live="polite">
 <h2>Seu resultado educativo</h2><div id="result" class="result"></div>
 <div class="actions"><button type="button" id="print">Imprimir orientação</button></div>
-<p class="foot">O IEPO é um indicador educativo criado para esta ação, não é instrumento clínico validado e não estima chance percentual de câncer.</p>
 </section>
-<section class="card">
-<h2>Fontes científicas</h2>
-<ul>
-<li><a href="https://www.gov.br/inca/pt-br/assuntos/cancer/tipos/mama/versao-para-populacao" target="_blank" rel="noopener">INCA — Câncer de mama: versão para população</a></li>
-<li><a href="https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/fatores-de-risco" target="_blank" rel="noopener">INCA — Fatores de risco</a></li>
-<li><a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/cancer-de-mama/cancer-de-mama/" target="_blank" rel="noopener">Ministério da Saúde — Câncer de mama</a></li>
-</ul>
-</section>
-<p class="foot">RosaGuia · Material de educação em saúde. Revise o conteúdo com a coordenação da atividade e profissionais responsáveis antes do uso público.</p>
-</main>
-<script>
-/* Cole abaixo a URL do Web App do Google Apps Script implantado como aplicativo da Web. */
-<script>
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzzGFysIW67mbJ6YgxLoS7NHMikQt8tInPefkCxfOFXH6L8bh508eLZDKSMxXyi1F5gyQ/exec";
 
+<!-- IFRAME E FORMULÁRIO OCULTOS PARA ENVIO SEGURO -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<form id="hiddenForm" method="POST" action="https://script.google.com/macros/s/AKfycbzzGFysIW67mbJ6YgxLoS7NHMikQt8tInPefkCxfOFXH6L8bh508eLZDKSMxXyi1F5gyQ/exec" target="hidden_iframe" style="display:none;">
+  <input type="hidden" name="id" id="h_id">
+  <input type="hidden" name="ageBand" id="h_ageBand">
+  <input type="hidden" name="age" id="h_age">
+  <input type="hidden" name="personal" id="h_personal">
+  <input type="hidden" name="familyBreast" id="h_familyBreast">
+  <input type="hidden" name="familyOther" id="h_familyOther">
+  <input type="hidden" name="symptoms" id="h_symptoms">
+  <input type="hidden" name="mammo" id="h_mammo">
+  <input type="hidden" name="alcohol" id="h_alcohol">
+  <input type="hidden" name="activity" id="h_activity">
+  <input type="hidden" name="referralPriority" id="h_referralPriority">
+  <input type="hidden" name="recommendation" id="h_recommendation">
+  <input type="hidden" name="associatedFactors" id="h_associatedFactors">
+  <input type="hidden" name="nextSteps" id="h_nextSteps">
+  <input type="hidden" name="consent" id="h_consent" value="true">
+</form>
+
+</main>
+
+<script>
 const get = name => document.querySelector(`input[name="${name}"]:checked`)?.value || "";
 const selected = id => document.getElementById(id).value;
+const labels = { "lt40": "Menos de 40 anos", "40_49": "40 a 49 anos", "50_74": "50 a 74 anos", "gt74": "75 anos ou mais" };
 
-// Dicionário de faixas etárias corrigido com aspas explícitas
-const labels = {
-  "lt40": "Menos de 40 anos",
-  "40_49": "40 a 49 anos",
-  "50_74": "50 a 74 anos",
-  "gt74": "75 anos ou mais"
-};
-
-function evaluate(a) {
-  let priority, headline, urgency, actions = [];
-  if (a.symptoms === "yes") {
-    priority = "Avaliação clínica prioritária";
-    urgency = "Procure uma unidade de saúde o quanto antes para avaliar a alteração mamária. Não espere pela próxima mamografia de rotina.";
-    actions.push("Alterações novas, como nódulo, retração/alteração da pele ou mamilo, ou secreção espontânea sanguinolenta, precisam de avaliação diagnóstica.");
-  } else if (a.symptoms === "unsure") {
-    priority = "Esclarecer alteração percebida";
-    urgency = "Se não tem certeza sobre uma alteração mamária, procure uma unidade de saúde para orientação e avaliação.";
-    actions.push("Não é possível decidir a necessidade de exames apenas por este questionário; descreva a alteração a um profissional.");
-  } else if (a.personal === "yes") {
-    priority = "Acompanhamento individualizado";
-    urgency = "Agende avaliação profissional para definir acompanhamento com base no seu histórico pessoal.";
-    actions.push("Informe o diagnóstico anterior e, se possível, leve relatórios e exames prévios.");
-  } else if (["young", "multiple"].includes(a.familyBreast) || a.familyOther === "yes") {
-    priority = "Avaliação individualizada do histórico familiar";
-    urgency = "Converse com profissional de saúde sobre o histórico familiar e se há indicação de avaliação especializada.";
-    actions.push("Registre, se souber, quais parentes tiveram câncer e a idade ao diagnóstico. Esse questionário não determina risco hereditário.");
-  } else if (a.age === "50_74" && (a.mammo === "old" || a.mammo === "never")) {
-    priority = "Verificar rastreamento";
-    urgency = "Converse com a unidade de saúde sobre mamografia de rastreamento, caso não tenha sintomas.";
-    actions.push("A recomendação brasileira prioritária para pessoas sem sintomas é mamografia a cada dois anos entre 50 e 74 anos.");
-  } else if (a.age === "40_49" || a.age === "gt74") {
-    priority = "Decisão individualizada sobre rastreamento";
-    urgency = "Converse com profissional de saúde sobre benefícios, possíveis danos e preferências antes de decidir sobre mamografia de rastreamento.";
-    actions.push("Fora da faixa prioritária de 50 a 74 anos, a decisão deve ser individualizada.");
+function evaluate(a){
+  let priority, urgency, actions=[];
+  if(a.symptoms==="yes"){
+    priority="Avaliação clínica prioritária";
+    urgency="Procure uma unidade de saúde o quanto antes para avaliar a alteração mamária.";
+    actions.push("Alterações novas precisam de avaliação diagnóstica.");
+  } else if(a.symptoms==="unsure"){
+    priority="Esclarecer alteração percebida";
+    urgency="Procure uma unidade de saúde para orientação e avaliação.";
+    actions.push("Descreva a alteração percebida a um profissional.");
+  } else if(a.personal==="yes"){
+    priority="Acompanhamento individualizado";
+    urgency="Agende avaliação profissional para definir acompanhamento.";
+    actions.push("Informe o diagnóstico anterior e leve exames prévios.");
+  } else if(["young","multiple"].includes(a.familyBreast)||a.familyOther==="yes"){
+    priority="Avaliação individualizada do histórico familiar";
+    urgency="Converse com profissional de saúde sobre o histórico familiar.";
+    actions.push("Registre quais parentes tiveram câncer e a idade ao diagnóstico.");
+  } else if(a.age==="50_74"&&(a.mammo==="old"||a.mammo==="never")){
+    priority="Verificar rastreamento";
+    urgency="Converse com a unidade de saúde sobre mamografia de rastreamento.";
+    actions.push("Recomendação prioritária: mamografia a cada dois anos entre 50 e 74 anos.");
+  } else if(a.age==="40_49"||a.age==="gt74"){
+    priority="Decisão individualizada sobre rastreamento";
+    urgency="Converse com profissional de saúde sobre os benefícios e riscos do rastreamento.";
+    actions.push("A decisão sobre mamografia deve ser individualizada.");
   } else {
-    priority = "Orientação preventiva e acompanhamento de rotina";
-    urgency = "Mantenha o acompanhamento de saúde habitual e procure avaliação se perceber uma alteração mamária nova ou persistente.";
-    actions.push("A ausência de sintomas ou de histórico familiar conhecido não elimina a possibilidade de câncer de mama.");
+    priority="Orientação preventiva e acompanhamento de rotina";
+    urgency="Mantenha o acompanhamento de saúde habitual.";
+    actions.push("A ausência de sintomas não elimina a necessidade de prevenção.");
   }
 
-  if (a.age === "50_74" && a.mammo === "recent" && a.symptoms === "no")
-    actions.push("Se não houver sintomas, mantenha o intervalo de rastreamento recomendado e siga a orientação da equipe de saúde.");
+  let factors=[];
+  if(a.age==="50_74") factors.push("Faixa etária prioritária para rastreamento populacional no Brasil (50 a 74 anos).");
+  else factors.push("Decisão de rastreamento de acordo com a faixa etária.");
+  if(a.personal==="yes") factors.push("Histórico pessoal de câncer de mama ou lesão relatado.");
+  if(a.alcohol==="yes") factors.push("Consumo de álcool relatado: fator associado ao risco.");
+  if(a.activity==="no") factors.push("Prática irregular de atividade física relatada.");
 
-  let factors = [];
-  if (a.age === "50_74") factors.push("Faixa etária de 50 a 74 anos: faixa prioritária para rastreamento populacional no Brasil.");
-  else if (a.age === "40_49") factors.push("Faixa etária de 40 a 49 anos: decisão sobre rastreamento deve ser individualizada.");
-  else if (a.age === "gt74") factors.push("75 anos ou mais: decisão sobre rastreamento deve ser individualizada.");
-  else factors.push("Menos de 40 anos: mamografia de rastreamento não é indicada automaticamente apenas pela idade.");
-
-  if (a.personal === "yes") factors.push("Histórico pessoal de câncer de mama ou lesão de alto risco relatado.");
-  else if (a.personal === "unknown") factors.push("Histórico pessoal não confirmado.");
-
-  if (["young", "multiple"].includes(a.familyBreast)) factors.push("Histórico familiar que merece avaliação profissional, especialmente por diagnóstico antes dos 50 anos ou múltiplos parentes.");
-  else if (a.familyBreast === "older") factors.push("Histórico familiar de câncer de mama relatado.");
-  else if (a.familyBreast === "unknown") factors.push("Histórico familiar de câncer de mama desconhecido.");
-
-  if (a.familyOther === "yes") factors.push("Histórico familiar de câncer de ovário ou câncer de mama em homem relatado.");
-  else if (a.familyOther === "unknown") factors.push("Histórico familiar de câncer de ovário ou câncer de mama em homem desconhecido.");
-
-  if (a.alcohol === "yes") factors.push("Consumo de álcool relatado: o álcool é um fator associado ao aumento do risco de câncer de mama.");
-  if (a.activity === "no") factors.push("Atividade física pouco frequente: manter-se ativa é uma medida de saúde recomendada e pode contribuir para reduzir o risco.");
-  if (a.mammo === "old") factors.push("Última mamografia informada há dois anos ou mais.");
-  if (a.mammo === "never") factors.push("Nunca realizou mamografia.");
-  if (a.symptoms === "yes" || a.symptoms === "unsure") factors.push("Sintomas/alteração atual não fazem parte de uma estimativa de risco: exigem avaliação clínica própria.");
-  if (!factors.length) factors.push("As respostas não identificaram fatores adicionais nesta lista educativa. Isso não significa ausência de risco.");
-
-  actions.push("Evitar bebidas alcoólicas, praticar atividade física e manter peso saudável são medidas que podem contribuir para reduzir o risco.");
-  return { priority, urgency, actions, factors };
+  return {priority,urgency,actions,factors};
 }
 
-function collect() {
-  return {
-    age: selected("age"),
-    personal: get("personal"),
-    familyBreast: get("familyBreast"),
-    familyOther: get("familyOther"),
-    symptoms: get("symptoms"),
-    mammo: get("mammo"),
-    alcohol: get("alcohol"),
-    activity: get("activity")
-  };
+function collect(){
+  return {age:selected("age"),personal:get("personal"),familyBreast:get("familyBreast"),familyOther:get("familyOther"),symptoms:get("symptoms"),mammo:get("mammo"),alcohol:get("alcohol"),activity:get("activity")};
 }
 
-function makeId() {
-  return "RG-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8).toUpperCase();
-}
+function makeId(){ return "RG-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8).toUpperCase(); }
 
-document.getElementById("quiz").addEventListener("submit", async e => {
+document.getElementById("quiz").addEventListener("submit", e => {
   e.preventDefault();
-  if (!document.getElementById("consent").checked) {
+  if(!document.getElementById("consent").checked){
     alert("Para continuar, confirme que leu e concorda com o aviso de privacidade.");
     return;
   }
@@ -209,56 +182,37 @@ document.getElementById("quiz").addEventListener("submit", async e => {
   const a = collect(), r = evaluate(a), id = makeId();
   const section = document.getElementById("resultSection"), box = document.getElementById("result");
 
-  box.innerHTML = `<section><h3>1. Prioridade de encaminhamento</h3><p><span class="pill">${r.priority}</span></p><p><strong>${r.urgency}</strong></p><p><strong>Próximos passos</strong></p><ul>${r.actions.map(x => `<li>${x}</li>`).join("")}</ul></section><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><section><h3>2. Perfil educativo de fatores associados</h3><p>Esta lista descreve respostas relevantes para educação em saúde. Não é uma pontuação nem uma estimativa de probabilidade individual.</p><ul>${r.factors.map(x => `<li>${x}</li>`).join("")}</ul></section><p class="note">Código anônimo desta sessão: ${id}</p><p class="foot">O resultado não substitui avaliação profissional e não deve ser usado para diagnóstico ou decisão médica.</p>`;
-  
+  box.innerHTML = `<section><h3>1. Prioridade</h3><p><span class="pill">${r.priority}</span></p><p><strong>${r.urgency}</strong></p><ul>${r.actions.map(x=>`<li>${x}</li>`).join("")}</ul></section><hr><section><h3>2. Fatores</h3><ul>${r.factors.map(x=>`<li>${x}</li>`).join("")}</ul></section><p class="note">Código: ${id}</p>`;
   section.classList.remove("hidden");
-  section.scrollIntoView({ behavior: "smooth" });
+  section.scrollIntoView({behavior:"smooth"});
 
-  if (document.getElementById("saveData").checked) {
-    if (!GOOGLE_SCRIPT_URL.startsWith("https://script.google.com/")) {
-      alert("Resultado exibido, mas a URL do Google Apps Script ainda não foi configurada; os dados não foram enviados.");
-      return;
-    }
+  // Se autorizado, preenche o formulário invisível e envia via iframe
+  if(document.getElementById("saveData").checked){
+    document.getElementById("h_id").value = id;
+    document.getElementById("h_ageBand").value = labels[a.age] || "";
+    document.getElementById("h_age").value = a.age;
+    document.getElementById("h_personal").value = a.personal;
+    document.getElementById("h_familyBreast").value = a.familyBreast;
+    document.getElementById("h_familyOther").value = a.familyOther;
+    document.getElementById("h_symptoms").value = a.symptoms;
+    document.getElementById("h_mammo").value = a.mammo;
+    document.getElementById("h_alcohol").value = a.alcohol;
+    document.getElementById("h_activity").value = a.activity;
+    document.getElementById("h_referralPriority").value = r.priority;
+    document.getElementById("h_recommendation").value = r.urgency;
+    document.getElementById("h_associatedFactors").value = r.factors.join("; ");
+    document.getElementById("h_nextSteps").value = r.actions.join("; ");
 
-    // Garante que ageBand sempre seja uma string válida
-    const ageText = labels[a.age] || "Não informada";
-
-    const payload = {
-      id: id,
-      ageBand: ageText,
-      age: a.age,
-      personal: a.personal,
-      familyBreast: a.familyBreast,
-      familyOther: a.familyOther,
-      symptoms: a.symptoms,
-      mammo: a.mammo,
-      alcohol: a.alcohol,
-      activity: a.activity,
-      referralPriority: r.priority,
-      recommendation: r.urgency,
-      associatedFactors: r.factors.join("; "),
-      nextSteps: r.actions.join("; "),
-      consent: true
-    };
-
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-      box.insertAdjacentHTML("beforeend", "<p class='note'>✓ Respostas enviadas para a planilha de acompanhamento.</p>");
-    } catch (err) {
-      box.insertAdjacentHTML("beforeend", "<p class='note'>Não foi possível iniciar o envio. Oriente a participante a procurar a equipe do evento.</p>");
-    }
+    // Dispara o envio nativo
+    document.getElementById("hiddenForm").submit();
+    box.insertAdjacentHTML("beforeend", "<p class='note'>✓ Respostas enviadas para a planilha de acompanhamento.</p>");
   }
 });
 
 document.getElementById("reset").addEventListener("click", () => {
   document.getElementById("quiz").reset();
   document.getElementById("resultSection").classList.add("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({top:0,behavior:"smooth"});
 });
 
 document.getElementById("print").addEventListener("click", () => window.print());
